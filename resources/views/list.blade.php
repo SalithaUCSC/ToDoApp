@@ -64,6 +64,7 @@
     <script>
         $(document).ready(function () {
             $(document).on('click', '.taskItem', function (event) {
+                $('#error').html('');
                 var text = $(this).text();
                 $('#modTitle').text('Edit Task');
                 $('#delBtn').show();
@@ -84,7 +85,8 @@
             $('#addBtn').click(function (event) {
                var text = $('#addTask').val();
                if (text == ""){
-                   $('#error').html('Task description is needed');$('#todoModal').show();
+                   $('#error').html('Task description is needed');
+                   $('#todoModal').show();
                }
                else{
                    $.post('list', {'text' : text, '_token' : $('input[name=_token]').val()}, function (data) {
